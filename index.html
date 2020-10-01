@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Hero.js"></script>
+
+</head>
+<body>
+<div id="game"></div>
+<script >
+    let hero = new Hero("anh/tom.jpg" , 20, 30, 200);
+    function start(){
+        if(hero.left < window.innerWidth - hero.size&&hero.top==20){
+            hero.moveRight();
+        } else if (hero.left > window.innerWidth - hero.size && window.innerHeight - hero.size > hero.top) {
+            hero.moveDown();
+        } else if (window.innerHeight - hero.size < hero.top) {
+            hero.moveLeft();
+        }
+        if (hero.left === 0) {
+            hero.moveUp();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 100)
+    }
+    start();
+</script>
+</body>
+</html>
